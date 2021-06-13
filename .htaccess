@@ -1,0 +1,2 @@
+RewriteEngine on
+RewriteRule ^ukt/([^/\.]+)/?$ api.php?nim=$1 [L]

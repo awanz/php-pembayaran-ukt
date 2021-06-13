@@ -1,0 +1,58 @@
+{
+	"info": {
+		"_postman_id": "1239209a-20f7-475b-afb0-169354757c7a",
+		"name": "UKT",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get Mahasiswa",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost/pembayaran-ukt/ukt/2114611027",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"pembayaran-ukt",
+						"ukt",
+						"2114611027"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update UKT",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"status_ukt\" : 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost/pembayaran-ukt/ukt/2114611027",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"pembayaran-ukt",
+						"ukt",
+						"2114611027"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
