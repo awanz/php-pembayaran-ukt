@@ -11,6 +11,26 @@
 				"method": "GET",
 				"header": [],
 				"url": {
+					"raw": "http://localhost/pembayaran-ukt/ukt/2114611028",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"pembayaran-ukt",
+						"ukt",
+						"2114611028"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Mahasiswa",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
 					"raw": "http://localhost/pembayaran-ukt/ukt/2114611027",
 					"protocol": "http",
 					"host": [
@@ -49,6 +69,54 @@
 						"pembayaran-ukt",
 						"ukt",
 						"2114611027"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Mahasiswa",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nim\" : \"1\",\r\n    \"nama\":\"test\",\r\n    \"prodi\":\"informatika\",\r\n    \"fakultas\":\"informatika\",\r\n    \"nominal_ukt\":\"5000000\",\r\n    \"semester\":\"2021/2022\",\r\n    \"status_ukt\":\"0\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost/pembayaran-ukt/ukt",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"pembayaran-ukt",
+						"ukt"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost/pembayaran-ukt/ukt/all",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"pembayaran-ukt",
+						"ukt",
+						"all"
 					]
 				}
 			},

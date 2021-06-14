@@ -21,6 +21,13 @@
             
             return $result;
         }
+
+        public function getAll($tableName) {
+            $query = "SELECT * FROM " . $tableName;
+            $result = $this->connection->query($query);
+            
+            return $result;
+        }
         
         public function getBy($tableName, $keyWhere, $valueWhere) {
             $query = "SELECT * FROM " . $tableName . " WHERE " . $keyWhere . " = " . $valueWhere;
@@ -63,6 +70,71 @@
                 $result['message'] = "Edit successful!";
             }
             
+            return $result;
+        }
+
+        public function insert($tableName, $dataArray) {
+            /*
+                INSERT INTO table_name
+                (column1, column2, column3, ...)
+                VALUES
+                (values1, values2, values3, ...)
+            */
+            $entry = null;
+            foreach ($dataArray as $key => $value) {
+                if (is_numeric($value)) {
+                    $entry = $entry . $value . ', ';
+                } else {
+                    if (preg_match("/\/[a-z]*>/i", $value ) != 0) {
+                        $entry = $entry . '"' . addslashes($value) . '", ';  
+                    } else {
+                        $entry = $entry . '"' . $value . '", ';
+                    }
+                }
+            }
+
+            $entry = rtrim($entry, ", ");
+            $arrayKeys = array_keys($dataArray);
+            
+            $column = null;
+            foreach ($arrayKeys as $value) {
+                $column = $column . $value . ", ";
+            }
+            $column = rtrim($column, ", ");
+            
+            $query = "INSERT INTO " . $tableName . " (" . $column . ") VALUES (" . $entry . ")";
+
+            $queryact = $this->connection->query($query);
+          
+            $result = null;
+            
+            if (!$queryact) {
+                $result['status'] = 0;
+                $result['message'] = "Query failed: (" . $this->connection->errno . ") " . $this->connection->error;
+            }else{
+                $result['status'] = 1;
+                $result['message'] = "Add successful!";
+                $result['last_id'] = $this->connection->insert_id;
+            }
+            
+            return $result;
+        }
+
+        public function delete($tableName, $keyWhere, $valueWhere) {
+            /*
+                DELETE FROM table_name
+                WHERE condition;
+            */
+            $query = "DELETE FROM " . $tableName . " WHERE " . $keyWhere . " = " . $valueWhere;
+            $queryact = $this->connection->query($query);
+
+            if (!$this->connection->affected_rows) {
+                $result['status'] = 0;
+                $result['message'] = "Query failed: (" . $this->connection->errno . ") " . $this->connection->error;
+            }else{
+                $result['status'] = 1;
+                $result['message'] = "Delete successful!";
+            }
             return $result;
         }
     }
